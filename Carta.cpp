@@ -16,9 +16,23 @@
 Carta::Carta() {
 }
 
-Carta::Carta(const Carta& orig) {
+Carta::Carta(char pal, int valor) {
+
 }
 
-Carta::~Carta() {
+bool Carta::operator<(const Carta& c) const {
+
+}
+
+bool Carta::operator<=(const Carta& c) const {
+
+}
+
+bool Carta::operator>(const Carta& c) const {
+
+}
+
+std::string Carta::toString() const {
+
 }
 
