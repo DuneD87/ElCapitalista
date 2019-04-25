@@ -6,69 +6,48 @@ Carta::Carta() {
     _valor = 1;
 }
 
-Carta::Carta(char pal, int valor,int ordre) {
+Carta::Carta(char pal, int valor) {
     _pal = pal;
     _valor = valor;
-    _ordre = ordre;
 }
 
 bool Carta::operator>(const Carta& c) const {
-    bool esMenor = false;
-    if (_ordre == 1) {
-        esMenor = _valor > c._valor;
-        if (_valor == c._valor) {
-            if (_pal == 'B' && c._pal != 'B')
-                esMenor = true;
-            else if (_pal == 'E' && c._pal != 'B' && c._pal != 'E')
-                esMenor = true;
-            else if (_pal == 'C' && c._pal == 'O')
-                esMenor = true;
-        }
-    } else {
-        if (_pal == 'B' && c._pal != 'B')
-            esMenor = true;
-        else if (_pal == 'E' && c._pal != 'B' && c._pal != 'E')
-            esMenor = true;
-        else if (_pal == 'C' && c._pal == 'O')
-            esMenor = true;
-        else if (_pal == _pal)
-            esMenor = _valor > c._valor;
-    }
-    return esMenor;
-}
-
-bool Carta::operator<(const Carta& c) const {
     bool esMajor = false;
-    if (_ordre == 1) {
-        esMajor = _valor < c._valor;
-        if (_valor == c._valor) {
-            if (_pal == 'O' && c._pal != 'O')
-                esMajor = true;
-            else if (_pal == 'B' && c._pal != 'B' && c._pal != 'O')
-                esMajor = true;
-            else if (_pal == 'E' && c._pal == 'C')
-                esMajor = true;
-        }
-    } else {
-        if (_pal == 'O' && c._pal != 'O')
+    if (_valor > 3 && c._valor > 3)
+        esMajor = _valor > c._valor;
+    else if (_valor > 3 && c._valor < 3)
+        esMajor = true;
+    else if (_valor < 3 && c._valor > 3)
+        esMajor = false;
+    else { // son iguals, comparem per pals
+        if (_pal == 'B' && c._pal != 'B')
             esMajor = true;
-        else if (_pal == 'B' && c._pal != 'B' && c._pal != 'O')
+        else if (_pal == 'E' && c._pal != 'B' && c._pal != 'E')
             esMajor = true;
-        else if (_pal == 'E' && c._pal == 'C')
+        else if (_pal == 'C' && c._pal == 'O')
             esMajor = true;
-        else if (_pal == _pal)
-            esMajor = _valor < c._valor;
     }
     return esMajor;
 }
 
-std::string Carta::toString() const {
-    std::string s = "[" + std::to_string(_valor) + _pal + "]";
-    return s;
+bool Carta::operator<(const Carta& c) const {
+    bool esMenor = false;
+    esMenor = _valor < c._valor;
+    if (_valor == c._valor) {
+        if (_pal == 'O' && c._pal != 'O')
+            esMenor = true;
+        else if (_pal == 'B' && c._pal != 'B' && c._pal != 'O')
+            esMenor = true;
+        else if (_pal == 'E' && c._pal == 'C')
+            esMenor = true;
+    }
+    return esMenor;
 }
 
-void Carta::setOrdre(int ordre) {
-    _ordre = ordre;
+std::string Carta::toString() const {
+    std::stringstream s;
+    s << "[" << _valor << _pal << "]";
+    return s.str();
 }
 
 int Carta::valor() const {

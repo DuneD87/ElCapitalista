@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>Carta.h</itemPath>
       <itemPath>Joc.h</itemPath>
+      <itemPath>Jugador.h</itemPath>
+      <itemPath>LlistaOrdenada.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,6 +18,8 @@
                    projectFiles="true">
       <itemPath>Carta.cpp</itemPath>
       <itemPath>Joc.cpp</itemPath>
+      <itemPath>Jugador.cpp</itemPath>
+      <itemPath>LlistaOrdenada.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -48,6 +52,14 @@
       </item>
       <item path="Joc.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LlistaOrdenada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LlistaOrdenada.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -78,6 +90,14 @@
       <item path="Joc.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Joc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LlistaOrdenada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LlistaOrdenada.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

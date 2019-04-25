@@ -9,6 +9,8 @@
 #define CARTA_H
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 class Carta {
 public:
@@ -22,7 +24,7 @@ public:
      * @param pal ens diu el pal de la carta
      * @param valor ens diu el valor de la carta
      */
-    Carta(char pal, int valor,int ordre);
+    Carta(char pal, int valor);
 
     /**Operadors*/
 
@@ -44,13 +46,7 @@ public:
      * @post Ens dona l'objecte en format de cadena de caracters
      */
     std::string toString() const;
-    
-    /**
-     * @brief marranada
-     * @pre ---
-     * @post Canvia l'ordre en el que s'ordenen les cartes 0 = pal 1 = valor
-     */
-    void setOrdre(int ordre);
+
     /**
      * @brief ens dona el valor de la carta
      * @return valor
@@ -60,21 +56,7 @@ private:
 
     char _pal; //@brief Pal de la carta
     int _valor; //@brief Valor de la carta
-    int _ordre; //@brief Ens diu com ordenar la carta
-    /**
-     * @brief Es menor
-     * @pre ---
-     * @post Ens diu si la carta es menor o igual
-     */
-    bool esMenor(const Carta & c) const;
-    
-    /**
-     * @brief Es major
-     * @pre ---
-     * @post Ens diu si la carta es major
-     */
-    bool esMajor(const Carta & c) const;
-    
+  
 };
 
 #endif /* CARTA_H */

@@ -1,25 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /* 
- * File:   main.cpp
- * Author: drive
+ * @brief Programa principal que inicialitzara el nostre joc
+ * @author Xavier Avivar Rubio
  *
  * Created on 15 / d’abril / 2019, 12:23
  */
 
 #include <cstdlib>
+#include <iostream>
 
-using namespace std;
+#include "Joc.h"
 
-/*
- * 
- */
 int main(int argc, char** argv) {
-
+    std::cout<<"*** JOC DE L'ESCLAU ***\n"<<
+            "ENTRA LA LLAVOR:\n";
+    unsigned llavor;
+    std::cin>>llavor;
+    std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
+    int nBaralles;
+    std::cin>>nBaralles;
+    Joc j(llavor,nBaralles);
+    j.inicialitzarBaralla();
     return 0;
 }
 
