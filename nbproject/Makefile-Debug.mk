@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU_1-Linux
+CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -36,9 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Carta.o \
-	${OBJECTDIR}/CuaDinamica.o \
-	${OBJECTDIR}/LlistaOrdenada.o \
-	${OBJECTDIR}/TaulaDinamica.o \
+	${OBJECTDIR}/Joc.o \
 	${OBJECTDIR}/main.o
 
 
@@ -71,20 +69,10 @@ ${OBJECTDIR}/Carta.o: Carta.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Carta.o Carta.cpp
 
-${OBJECTDIR}/CuaDinamica.o: CuaDinamica.cpp
+${OBJECTDIR}/Joc.o: Joc.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CuaDinamica.o CuaDinamica.cpp
-
-${OBJECTDIR}/LlistaOrdenada.o: LlistaOrdenada.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LlistaOrdenada.o LlistaOrdenada.cpp
-
-${OBJECTDIR}/TaulaDinamica.o: TaulaDinamica.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TaulaDinamica.o TaulaDinamica.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Joc.o Joc.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=GNU_1-Linux
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU_1-Linux
+CND_PLATFORM_Debug=GNU-Linux
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
 CND_ARTIFACT_NAME_Debug=elcapitalista
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU_1-Linux/elcapitalista
-CND_PACKAGE_DIR_Debug=dist/Debug/GNU_1-Linux/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/elcapitalista
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=elcapitalista.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU_1-Linux/package/elcapitalista.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/elcapitalista.tar
 # Release configuration
-CND_PLATFORM_Release=GNU_1-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU_1-Linux
+CND_PLATFORM_Release=GNU-Linux
+CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
 CND_ARTIFACT_NAME_Release=elcapitalista
-CND_ARTIFACT_PATH_Release=dist/Release/GNU_1-Linux/elcapitalista
-CND_PACKAGE_DIR_Release=dist/Release/GNU_1-Linux/package
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/elcapitalista
+CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
 CND_PACKAGE_NAME_Release=elcapitalista.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU_1-Linux/package/elcapitalista.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/elcapitalista.tar
 #
 # include compiler specific variables
 #
