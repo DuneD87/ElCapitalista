@@ -56,7 +56,14 @@ public:
      * @post S'ha omplert una taula amb n jugadors
      */
     void inicialitzarJugadors();
-
+    
+    /**
+     * @brief Reparteix cartes
+     * @pre ---
+     * @post S'han repartir les cartes entre tots els jugadors
+     */
+    void repartirCartes();
+    
 private:
     
     unsigned _llavor; //@brief Llavor per generar aleatorietat

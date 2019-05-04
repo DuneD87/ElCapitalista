@@ -1,7 +1,4 @@
 
-
-#include <limits>
-
 #include "Joc.h"
 
 Joc::Joc() {
@@ -27,7 +24,6 @@ void Joc::inicialitzarBaralla() {
         for (int k = 1; k <= 12; k++) { //per cada valor
             char pal;
             int valor = k;
-
             switch (j) {
                 case 0:
                     pal = 'O';
@@ -52,7 +48,6 @@ void Joc::inicialitzarBaralla() {
 
 void Joc::barrejarBaralla() {
     //Algoritme de fisher-yates
-
     for (unsigned i = _nCartes - 1; i > 0; i--) {
         unsigned pos = random(i + 1);
         intercanvi(_cartes[pos], _cartes[i]);
@@ -90,4 +85,12 @@ void Joc::reserva() {
 void Joc::allibera() {
     delete [] _cartes;
     delete [] _jugadors;
+}
+
+void Joc::repartirCartes() {
+    int j = _nJugadors - 1; //posicio del jugador
+    for (int i = 0; i < _nCartes; i++) { //per cada carta
+        if (j < 0) j = _nJugadors - 1;//comencem per l'ultim jugador
+        _jugadors[j].afegirCarta(_cartes[i]);
+    }
 }

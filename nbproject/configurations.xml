@@ -8,7 +8,6 @@
       <itemPath>ConjuntCartes.h</itemPath>
       <itemPath>Joc.h</itemPath>
       <itemPath>Jugador.h</itemPath>
-      <itemPath>LlistaOrdenada.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -62,10 +61,6 @@
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="LlistaOrdenada.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="LlistaOrdenada.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -104,10 +99,6 @@
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="LlistaOrdenada.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="LlistaOrdenada.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

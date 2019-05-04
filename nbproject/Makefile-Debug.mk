@@ -39,7 +39,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/ConjuntCartes.o \
 	${OBJECTDIR}/Joc.o \
 	${OBJECTDIR}/Jugador.o \
-	${OBJECTDIR}/LlistaOrdenada.o \
 	${OBJECTDIR}/main.o
 
 
@@ -86,11 +85,6 @@ ${OBJECTDIR}/Jugador.o: Jugador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
-
-${OBJECTDIR}/LlistaOrdenada.o: LlistaOrdenada.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LlistaOrdenada.o LlistaOrdenada.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
