@@ -16,6 +16,7 @@
 
 #include "Jugador.h"
 #include "Carta.h"
+#include "PilaCartes.h"
 
 class Joc {
 public:

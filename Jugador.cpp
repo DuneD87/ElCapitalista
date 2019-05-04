@@ -22,10 +22,18 @@ std::string Jugador::toString() const {
     return _nom;
 }
 
-bool Jugador::teCartes(int nCartes, int valor) {
+bool Jugador::teCartesRepetides(int nCartes, int valor) {
     int n = 0;
     for (int i = 0; i < nCartes; i++) {
         //Mirem si existeixen n cartes amb el valor donat
-        
+        for (int j = 0 ; j < _ma.tamany(); j++) {
+            if (_ma[j].valor() == valor)
+                n++;
+        }
     }
+    return n == nCartes - 1;
+}
+
+bool Jugador::quedenCartes() const {
+    return _ma.tamany() > 0;
 }

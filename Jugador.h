@@ -55,7 +55,14 @@ public:
      * el valor ha d'estar entre 1 i 12
      * @post Ens diu si el jugador el nombre de cartes amb el valor donat
      */
-    bool teCartes(int nCartes, int valor);
+    bool teCartesRepetides(int nCartes, int valor) const;
+    
+    /**
+     * @brief Li queden cartes
+     * @pre ---
+     * @post Ens diu si el jugador encara te cartes
+     */
+    bool quedenCartes() const;
     
 private:
     ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
