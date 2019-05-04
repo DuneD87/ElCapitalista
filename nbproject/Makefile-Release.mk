@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/ConjuntCartes.o \
 	${OBJECTDIR}/Joc.o \
 	${OBJECTDIR}/Jugador.o \
+	${OBJECTDIR}/PilaCartes.o \
 	${OBJECTDIR}/main.o
 
 
@@ -85,6 +86,11 @@ ${OBJECTDIR}/Jugador.o: Jugador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
+
+${OBJECTDIR}/PilaCartes.o: PilaCartes.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PilaCartes.o PilaCartes.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -8,7 +8,7 @@ Joc::Joc() {
 Joc::Joc(unsigned llavor, int nJugadors) {
     _llavor = llavor;
     _nJugadors = nJugadors;
-    _nCartes = 48;
+    //_nCartes = 48;
     reserva();
 }
 
@@ -16,43 +16,48 @@ Joc::~Joc() {
     allibera();
 }
 
-void Joc::inicialitzarBaralla() {
-
+void Joc::inicialitzarBaralla(int nBaralles) {
     int pos = 0;
-
-    for (int j = 0; j < 4; j++) { //per cada pal
-        for (int k = 1; k <= 12; k++) { //per cada valor
-            char pal;
-            int valor = k;
-            switch (j) {
-                case 0:
-                    pal = 'O';
-                    break;
-                case 1:
-                    pal = 'C';
-                    break;
-                case 2:
-                    pal = 'E';
-                    break;
-                case 3:
-                    pal = 'B';
-                    break;
+    _nCartes = nBaralles * 48;
+    _nBaralles = nBaralles;
+    Carta cartes[_nCartes];
+    for (int i = 0; i < _nBaralles; i++) {
+        for (int j = 0; j < 4; j++) { //per cada pal
+            for (int k = 1; k <= 12; k++) { //per cada valor
+                char pal;
+                int valor = k;
+                switch (j) {
+                    case 0:
+                        pal = 'O';
+                        break;
+                    case 1:
+                        pal = 'C';
+                        break;
+                    case 2:
+                        pal = 'E';
+                        break;
+                    case 3:
+                        pal = 'B';
+                        break;
+                }
+                Carta carta(pal, valor);
+                cartes[pos] = carta;
+                pos++;
             }
-            Carta carta(pal, valor);
-            _cartes[pos] = carta;
-            pos++;
         }
     }
-
-}
-
-void Joc::barrejarBaralla() {
     //Algoritme de fisher-yates
     for (unsigned i = _nCartes - 1; i > 0; i--) {
         unsigned pos = random(i + 1);
-        intercanvi(_cartes[pos], _cartes[i]);
+        intercanvi(cartes[pos], cartes[i]);
+    }
+    int j = _nJugadors - 1; //posicio del jugador
+    for (int i = 0; i < _nCartes; i++) { //per cada carta
+        if (j < 0) j = _nJugadors - 1; //comencem per l'ultim jugador
+        _jugadors[j].afegirCarta(cartes[i]);
     }
 }
+
 
 unsigned Joc::random(unsigned i) {
     _llavor = a * _llavor + c;
@@ -67,30 +72,24 @@ void Joc::intercanvi(Carta& a, Carta& b) {
 }
 
 void Joc::inicialitzarJugadors() {
-    for (int i = 1; i <= 4; i++) {
-        std::cout<<"ENTRA EL NOM DEL JUGADOR/A " <<i<<":\n";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    for (int i = 1; i <= _nJugadors; i++) {
+        std::cout << "ENTRA EL NOM DEL JUGADOR/A " << i << ":\n";
         std::string nom;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-        std::getline(std::cin,nom);
+        std::getline(std::cin, nom);
         Jugador j(nom);
         _jugadors[i - 1] = j;
     }
 }
 
 void Joc::reserva() {
-    _cartes = new Carta[_nCartes]; //Bad alloc
     _jugadors = new Jugador[_nJugadors]; //mes bad alloc
 }
 
 void Joc::allibera() {
-    delete [] _cartes;
     delete [] _jugadors;
 }
 
-void Joc::repartirCartes() {
-    int j = _nJugadors - 1; //posicio del jugador
-    for (int i = 0; i < _nCartes; i++) { //per cada carta
-        if (j < 0) j = _nJugadors - 1;//comencem per l'ultim jugador
-        _jugadors[j].afegirCarta(_cartes[i]);
-    }
+void Joc::ronda() {
+
 }

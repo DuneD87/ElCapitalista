@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <limits>
 
 #include "Jugador.h"
 #include "Carta.h"
@@ -41,7 +42,7 @@ public:
      * @pre nBaralles > 0
      * @post S'ha inicialitzat la baralla
      */
-    void inicialitzarBaralla();
+    void inicialitzarBaralla(int nBaralles);
     
     /**
      * @brief Barreja la baralla
@@ -56,7 +57,7 @@ public:
      * @post S'ha omplert una taula amb n jugadors
      */
     void inicialitzarJugadors();
-    
+   
     /**
      * @brief Reparteix cartes
      * @pre ---
@@ -64,14 +65,22 @@ public:
      */
     void repartirCartes();
     
+    /**
+     * @brief Ronda d'una partida
+     * @pre ---
+     * @post S'ha efectuat una ronda de la partida
+     */
+    void ronda();
+    
 private:
     
     unsigned _llavor; //@brief Llavor per generar aleatorietat
-    //int _nBaralles; //@brief Ens diu el nombre de baralles del joc
-    Carta * _cartes;//@brief Taula dinamica que conte les cartes
+    int _nBaralles; //@brief Ens diu el nombre de baralles del joc
+    //Carta * _cartes;//@brief Taula dinamica que conte les cartes
     int _nCartes;//@brief numero de cartes que conte la baralla
     int _nJugadors;//@brief Numero de jugadors
     Jugador * _jugadors;//@brief Taula dinamica de jugadors
+    PilaCartes _descartades;//@brief Pila de cartes descartades
     
     static const unsigned a = 1103515245, c = 12345, m = 32768; //Constants necessaries per generar nombres aleatoris
     
@@ -102,6 +111,8 @@ private:
      * @post S'ha alliberat memoria
      */
     void allibera();
+    
+    
 };
 
 #endif /* JOC_H */

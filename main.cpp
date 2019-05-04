@@ -24,8 +24,12 @@ int main(int argc, char** argv) {
     int nJugadors;
     std::cin>>nJugadors;
     Joc j(llavor,nJugadors);
-    j.inicialitzarBaralla();
     j.inicialitzarJugadors();
+    std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
+    int nBaralles;
+    std::cin>>nBaralles;
+    j.inicialitzarBaralla(nBaralles);
+    j.ronda();
     return 0;
 }
 

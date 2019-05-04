@@ -8,6 +8,7 @@
       <itemPath>ConjuntCartes.h</itemPath>
       <itemPath>Joc.h</itemPath>
       <itemPath>Jugador.h</itemPath>
+      <itemPath>PilaCartes.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,7 +21,7 @@
       <itemPath>ConjuntCartes.cpp</itemPath>
       <itemPath>Joc.cpp</itemPath>
       <itemPath>Jugador.cpp</itemPath>
-      <itemPath>LlistaOrdenada.cpp</itemPath>
+      <itemPath>PilaCartes.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -61,6 +62,10 @@
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="PilaCartes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PilaCartes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -99,6 +104,10 @@
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PilaCartes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PilaCartes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

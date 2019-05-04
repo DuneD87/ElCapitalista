@@ -1,6 +1,6 @@
 
 /* 
- * @brief Taula dinamica d'elements generics
+ * @brief Taula dinamica de cartes
  * @author Xavier Avivar
  *
  * Created on 8 / d’abril / 2019, 18:29

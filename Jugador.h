@@ -49,6 +49,14 @@ public:
      */
     std::string toString() const;
     
+    /**
+     * @brief Conte les cartes
+     * @pre nCartes ha de ser inferior al nombre d'elements a la ma del jugador i 
+     * el valor ha d'estar entre 1 i 12
+     * @post Ens diu si el jugador el nombre de cartes amb el valor donat
+     */
+    bool teCartes(int nCartes, int valor);
+    
 private:
     ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
     std::string _nom;//@brief Nom del jugador
