@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Carta.o \
+	${OBJECTDIR}/ConjuntCartes.o \
 	${OBJECTDIR}/Joc.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/LlistaOrdenada.o \
@@ -70,6 +71,11 @@ ${OBJECTDIR}/Carta.o: Carta.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Carta.o Carta.cpp
+
+${OBJECTDIR}/ConjuntCartes.o: ConjuntCartes.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConjuntCartes.o ConjuntCartes.cpp
 
 ${OBJECTDIR}/Joc.o: Joc.cpp
 	${MKDIR} -p ${OBJECTDIR}

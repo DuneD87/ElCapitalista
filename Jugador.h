@@ -13,7 +13,7 @@
 #include <iostream>
 
 #include "Carta.h"
-#include "LlistaOrdenada.h"//Conjunt cartes == llista ordeanda ?
+#include "ConjuntCartes.h"//Conjunt cartes == llista ordeanda ?
 
 class Jugador {
 public:
@@ -50,7 +50,7 @@ public:
     std::string toString() const;
     
 private:
-    LlistaOrdenada<Carta> _ma;//@brief Conjunt de cartes que tindra el jugador
+    ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
     std::string _nom;//@brief Nom del jugador
     bool _desc; //@brief Ens diu si el jugador esta desqualificat
 };

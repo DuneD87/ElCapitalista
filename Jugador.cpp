@@ -9,14 +9,13 @@ Jugador::Jugador(std::string nom) {
 }
 
 void Jugador::afegirCarta(const Carta& c) {
-    _ma.inserir(c);
+    _ma.afegir(c);
 }
 
 void Jugador::eliminarConjuntCartes(int nCartes, int valor) {
-    for (int i = 0 ; i < nCartes; i++)
-        if (!_ma.esFi())
-            if (_ma.elem().valor() == valor)
-                _ma.esborrar(_ma.elem());
+    for (int i = 0; i < nCartes; i++)
+        if (_ma[i].valor() == valor)
+            _ma.eliminar(_ma[i]);
 }
 
 std::string Jugador::toString() const {

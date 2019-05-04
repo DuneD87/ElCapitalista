@@ -49,12 +49,12 @@
 #include <functional> 	    // Function objects, designed for use with the standard algorithms
 #include <utility> 	    // Various utility components
 #include <ctime> 	    // C-style time/date utilites
-#include <cstddef> 	    // typedefs for types such as size_t, NULL and others
+#include <cstddef> 	    // typedefs for tyPes such as size_t, NULL and others
 #include <new> 	            // Low-level memory management utilities
 #include <memory> 	    // Higher level memory management utilities
-#include <climits>          // limits of integral types
-#include <cfloat> 	    // limits of float types
-#include <limits> 	    // standardized way to query properties of arithmetic types
+#include <climits>          // limits of integral tyPes
+#include <cfloat> 	    // limits of float tyPes
+#include <limits> 	    // standardized way to query properties of arithmetic tyPes
 #include <exception> 	    // Exception handling utilities
 #include <stdexcept> 	    // Standard exception objects
 #include <cassert> 	    // Conditionally compiled macro that compares its argument to zero
@@ -98,8 +98,8 @@
 #include <initializer_list> // (since C++11) 	std::initializer_list class template
 #include <tuple>            // (since C++11) 	std::tuple class template
 #include <scoped_allocator> // (since C++11) 	Nested allocator class
-#include <cstdint>          // (since C++11) 	fixed-size types and limits of other types
-#include <cinttypes>        // (since C++11) 	formatting macros , intmax_t and uintmax_t math and conversions
+#include <cstdint>          // (since C++11) 	fixed-size tyPes and limits of other tyPes
+#include <cinttyPes>        // (since C++11) 	formatting macros , intmax_t and uintmax_t math and conversions
 #include <system_error>     // (since C++11) 	defines std::error_code, a platform-dependent error code
 #include <cuchar>           // (since C++11) 	C-style Unicode character conversion functions
 #include <array>            // (since C++11) 	std::array container

@@ -17,11 +17,15 @@ int main(int argc, char** argv) {
             "ENTRA LA LLAVOR:\n";
     unsigned llavor;
     std::cin>>llavor;
-    std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
+    /*std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
     int nBaralles;
-    std::cin>>nBaralles;
-    Joc j(llavor,nBaralles);
+    std::cin>>nBaralles;*/
+    std::cout<<"ENTRA EL NOMBRE DE JUGADORS:\n";
+    int nJugadors;
+    std::cin>>nJugadors;
+    Joc j(llavor,nJugadors);
     j.inicialitzarBaralla();
+    j.inicialitzarJugadors();
     return 0;
 }
 

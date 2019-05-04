@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Jugador.h"
 #include "Carta.h"
 
 class Joc {
@@ -27,7 +28,7 @@ public:
      * @param llavor ens dona la llavor que farem servir per fer la barreja de cartes
      * @param nBaralles ens diu el nombre de baralles que te el joc
      */
-    Joc(unsigned llavor,int nBaralles);
+    Joc(unsigned llavor,int nJugadors);
     
     /**
      * @brief Destructor
@@ -45,17 +46,27 @@ public:
     /**
      * @brief Barreja la baralla
      * @pre ---
-     * @post S'ha barrejat la baralla
+     * @post S'ha barrejat la baralla fen servir l'algoritme de fisher yates
      */
     void barrejarBaralla();
+    
+    /**
+     * @brief Inicialitza jugadors
+     * @pre 0 < nJugadors
+     * @post S'ha omplert una taula amb n jugadors
+     */
+    void inicialitzarJugadors();
 
 private:
     
     unsigned _llavor; //@brief Llavor per generar aleatorietat
-    int _nBaralles; //@brief Ens diu el nombre de baralles del joc
-    Carta * _cartes;//@brief Taula dinamica que conte les cartes;
-    int _nCartes;//@brief numero de cartes que conte la baralla;
-    static const unsigned a = 1103515245, c = 12345, m = 32768;
+    //int _nBaralles; //@brief Ens diu el nombre de baralles del joc
+    Carta * _cartes;//@brief Taula dinamica que conte les cartes
+    int _nCartes;//@brief numero de cartes que conte la baralla
+    int _nJugadors;//@brief Numero de jugadors
+    Jugador * _jugadors;//@brief Taula dinamica de jugadors
+    
+    static const unsigned a = 1103515245, c = 12345, m = 32768; //Constants necessaries per generar nombres aleatoris
     
     /**
      * @brief Generador de nombres aleatoris
@@ -70,6 +81,20 @@ private:
      * @post S'han intercanviat les cartes de posicio
      */
     void intercanvi(Carta& a, Carta& b);
+    
+    /**
+     * @breif Reserva memoria
+     * @pre ---
+     * @post S'ha reservat memoria per els jugadors i les cartes
+     */
+    void reserva();
+    
+    /**
+     * @brief Allibera memoria
+     * @pre ---
+     * @post S'ha alliberat memoria
+     */
+    void allibera();
 };
 
 #endif /* JOC_H */

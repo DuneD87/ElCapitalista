@@ -30,13 +30,13 @@ public:
 
     /**
      * @brief Operador menor
-     * @post Compara amb ors, copes, espases i bastos i pals 1..12
+     * @post Compara amb ors, coPes, espases i bastos i pals 1..12
      */
     bool operator<(const Carta & c) const;
 
     /**
      * @brief Operador major
-     * @post Compara amb ors, copes, espases i bastos i pals 1..12
+     * @post Compara amb ors, coPes, espases i bastos i pals 1..12
      */
     bool operator>(const Carta & c) const;
 
