@@ -72,10 +72,17 @@ public:
      */
     void mostrarMa() const;
     
+    /**
+     * @brief Ens diu si el jugador ha finalitzat la ronda
+     * @pre ---
+     * @post Retorna cert si el jugador ja no te cartes
+     */
+    bool haAcabat() const;
+    
 private:
     ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
     std::string _nom;//@brief Nom del jugador
-    bool _desc; //@brief Ens diu si el jugador esta desqualificat
+    bool _haAcabat; //@brief Ens diu si el jugador ha acabat la ronda
 };
 
 #endif /* JUGADOR_H */

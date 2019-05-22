@@ -8,20 +8,26 @@ Jugador::Jugador(std::string nom) {
     _nom = nom;
 }
 
+
 void Jugador::afegirCarta(const Carta& c) {
 
     _ma.afegir(c);
 }
 
 void Jugador::eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p) {
-    int nCartesEliminades = 0;
-    for (int i = 0; i < _ma.tamany(); i++)
-        if (_ma.elem(i).valor() == valor && nCartesEliminades < nCartes) {
-            std::cout<<_ma.elem(i).toString();
-            p.empila(_ma.elem(i));
-            _ma.eliminar(_ma.elem(i));
-            nCartesEliminades++;
+    
+    for (int i = 0; i < nCartes; i++) {
+        bool cartaEliminada = false;
+        for (int i = 0; i < _ma.tamany(); i++) {
+            if ((_ma.elem(i).valor() == valor) && !cartaEliminada) {
+
+                std::cout<<_ma.elem(i).toString();
+                p.empila(_ma.elem(i));
+                _ma.eliminar(_ma.elem(i));
+                cartaEliminada = true;
+            }
         }
+    }
 }
 
 std::string Jugador::toString() const {
@@ -48,4 +54,8 @@ bool Jugador::quedenCartes() const {
 
 void Jugador::mostrarMa() const {
     std::cout<<_ma.toString()<<'\n';
+}
+
+bool Jugador::haAcabat() const {
+    return _ma.tamany() == 0;
 }

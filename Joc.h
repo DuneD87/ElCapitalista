@@ -73,6 +73,13 @@ public:
      */
     void ronda();
     
+    /**
+     * @brief Mostra la classificacio
+     * @pre S'ha jugat una ronda previament
+     * @post S'ha mostrar la classificacio de la ronda
+     */
+    void mostrarClassificacio() const;
+    
 private:
     
     unsigned _llavor; //@brief Llavor per generar aleatorietat
@@ -81,6 +88,7 @@ private:
     int _nCartes;//@brief numero de cartes que conte la baralla
     int _nJugadors;//@brief Numero de jugadors
     Jugador * _jugadors;//@brief Taula dinamica de jugadors
+    int * _classificacio;
     PilaCartes _descartades;//@brief Pila de cartes descartades
     
     static const unsigned a = 1103515245, c = 12345, m = 32768; //Constants necessaries per generar nombres aleatoris
@@ -113,6 +121,12 @@ private:
      */
     void allibera();
     
+    /**
+     * @brief Compara 2 valors de cartes
+     * @pre x i y >= 1 && <= 12
+     * @post Retorna cert si el valor de la carta es mes gran, fals altrament
+     */
+    bool esMesGran(int x, int y) const;
     
 };
 

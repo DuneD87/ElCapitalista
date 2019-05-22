@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     std::cin>>nBaralles;
     j.inicialitzarBaralla(nBaralles);
     j.ronda();
+    j.mostrarClassificacio();
     return 0;
 }
 
