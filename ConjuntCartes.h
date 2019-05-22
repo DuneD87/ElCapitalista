@@ -84,7 +84,7 @@ public:
      * @pre 0<=i<=nElems
      * @post Retorna l'element a la posicio i de la taula dinamica
      */
-    Carta & operator [](int i);
+    Carta & elem(int j);
     
     /**
      * @brief Cerca l'element

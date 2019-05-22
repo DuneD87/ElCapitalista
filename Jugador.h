@@ -14,6 +14,7 @@
 
 #include "Carta.h"
 #include "ConjuntCartes.h"//Conjunt cartes == llista ordeanda ?
+#include "PilaCartes.h"
 
 class Jugador {
 public:
@@ -38,9 +39,9 @@ public:
     /**
      * @brief Eliminar conjunt de cartes
      * @pre 0 < n < nombre de cartes a la ma
-     * @post S'ha elimant un conjunt de cartes de la ma
+     * @post S'ha elimant un conjunt de cartes de la ma i empilat a la pila
      */
-    void eliminarConjuntCartes(int nCartes, int valor);
+    void eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p);
     
     /**
      * @brief Mostra el jugador
@@ -55,7 +56,7 @@ public:
      * el valor ha d'estar entre 1 i 12
      * @post Ens diu si el jugador el nombre de cartes amb el valor donat
      */
-    bool teCartesRepetides(int nCartes, int valor) const;
+    bool teCartesRepetides(int nCartes, int valor);
     
     /**
      * @brief Li queden cartes
@@ -63,6 +64,13 @@ public:
      * @post Ens diu si el jugador encara te cartes
      */
     bool quedenCartes() const;
+    
+    /**
+     * @brief Mostra la ma del jugador
+     * @pre El jugador encara te cartes
+     * @post S'han mostrat les cartes que te el jugador actualment
+     */
+    void mostrarMa() const;
     
 private:
     ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador

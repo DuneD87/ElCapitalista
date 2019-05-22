@@ -6,47 +6,52 @@ Carta::Carta() {
     _valor = 1;
 }
 
-Carta::Carta(char pal, int valor) {
+Carta::Carta(int pal, int valor) {
     _pal = pal;
     _valor = valor;
 }
 
 bool Carta::operator>(const Carta& c) const {
     bool esMajor = false;
-    if (_valor > 3 && c._valor > 3)
+    if (_valor > 2 && c._valor > 2) {  // els dos son ems grans que 2
         esMajor = _valor > c._valor;
-    else if (_valor > 3 && c._valor < 3)
+        if (_valor == c._valor)
+            esMajor = _pal > c._pal;
+    }else if (_valor <= 2 && c._valor > 2)
         esMajor = true;
-    else if (_valor < 3 && c._valor > 3)
+    else if (_valor > 2 && c._valor <= 2)
         esMajor = false;
-    else { // son iguals, comparem per pals
-        if (_pal == 'B' && c._pal != 'B')
-            esMajor = true;
-        else if (_pal == 'E' && c._pal != 'B' && c._pal != 'E')
-            esMajor = true;
-        else if (_pal == 'C' && c._pal == 'O')
-            esMajor = true;
+    else if (_valor <= 2 && c._valor <= 2) {
+        esMajor = _valor > c._valor;
+        if (_valor == c._valor)
+            esMajor = _pal > c._pal;
     }
+    
     return esMajor;
 }
 
 bool Carta::operator<(const Carta& c) const {
-    bool esMenor = false;
-    esMenor = _valor < c._valor;
-    if (_valor == c._valor) {
-        if (_pal == 'O' && c._pal != 'O')
-            esMenor = true;
-        else if (_pal == 'B' && c._pal != 'B' && c._pal != 'O')
-            esMenor = true;
-        else if (_pal == 'E' && c._pal == 'C')
-            esMenor = true;
+    bool esMajor = false;
+    if (_valor > 2 && c._valor > 2) {  // els dos son ems grans que 2
+        esMajor = _valor < c._valor;
+        if (_valor == c._valor)
+            esMajor = _pal < c._pal;
+    }else if (_valor <= 2 && c._valor > 2)
+        esMajor = false;
+    else if (_valor > 2 && c._valor <= 2)
+        esMajor = true;
+    else if (_valor <= 2 && c._valor <= 2) {
+        esMajor = _valor < c._valor;
+        if (_valor == c._valor)
+            esMajor = _pal < c._pal;
     }
-    return esMenor;
+    return esMajor;
 }
 
 std::string Carta::toString() const {
     std::stringstream s;
-    s << "[" << _valor << _pal << "]";
+    char pal[4] = {'O', 'C', 'E', 'B'};
+    s << "[" << _valor << pal[_pal] << "]";
     return s.str();
 }
 

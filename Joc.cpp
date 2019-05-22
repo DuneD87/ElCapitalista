@@ -24,23 +24,8 @@ void Joc::inicialitzarBaralla(int nBaralles) {
     for (int i = 0; i < _nBaralles; i++) {
         for (int j = 0; j < 4; j++) { //per cada pal
             for (int k = 1; k <= 12; k++) { //per cada valor
-                char pal;
                 int valor = k;
-                switch (j) {
-                    case 0:
-                        pal = 'O';
-                        break;
-                    case 1:
-                        pal = 'C';
-                        break;
-                    case 2:
-                        pal = 'E';
-                        break;
-                    case 3:
-                        pal = 'B';
-                        break;
-                }
-                Carta carta(pal, valor);
+                Carta carta(j, valor);
                 cartes[pos] = carta;
                 pos++;
             }
@@ -55,6 +40,7 @@ void Joc::inicialitzarBaralla(int nBaralles) {
     for (int i = 0; i < _nCartes; i++) { //per cada carta
         if (j < 0) j = _nJugadors - 1; //comencem per l'ultim jugador
         _jugadors[j].afegirCarta(cartes[i]);
+        j--;
     }
 }
 
@@ -91,5 +77,51 @@ void Joc::allibera() {
 }
 
 void Joc::ronda() {
-
+    //Mirem si tos els jugadors tenen cartes..
+    int jugadorsFi = _nJugadors;
+    int torn = 0;
+    int tornAnterior = _nJugadors + 1;
+    while (jugadorsFi != 0) {
+        if (torn < jugadorsFi) {
+            
+            if (_jugadors[torn].quedenCartes()) {
+                if (tornAnterior != torn) {
+                    std::cout<<"- TORN DEL JUGADOR/A "<<_jugadors[torn].toString()<<" -\nMA:\n";
+                    _jugadors[torn].mostrarMa();
+                }
+                tornAnterior = torn;
+                std::cout<<"QUINES CARTES VOLS TIRAR?\n";
+                int n,c;
+                std::cin>>n>>c;
+                if (n > 0) {
+                    if (_jugadors[torn].teCartesRepetides(n,c)) {
+                        std::cout<<"TIRADA: ";
+                        _jugadors[torn].eliminarConjuntCartes(n,c,_descartades);
+                        std::cout<<"\n";
+                        if (c == 2) {
+                            std::cout<<"- TORN DEL JUGADOR/A "<<_jugadors[torn].toString()<<"\n";
+                            std::cout<<"EL JUGADOR/A "<<_jugadors[torn].toString()<<" INICIA TORN.\n";
+                            _jugadors[torn].mostrarMa();
+                            torn--;
+                        }
+                    } else {
+                        std::cout<<"ERROR. EL JUGADOR NO TE AQUESTES CARTES\n";
+                        torn--;
+                    }
+                } else if (n == 0) {
+                    std::cout<<"EL JUGADOR/A "<<_jugadors[torn].toString()<<" PASSA.\n";
+                } else {
+                    std::cout<<"DARRERES CARTES TIRADES:\n";
+                    _descartades.mostrarCartes();
+                    std::cout<<"\n";
+                    torn--;
+                }
+            } else {
+                jugadorsFi--;
+            }
+            torn++;
+        } else {
+            torn = 0;//tornem a començar
+        }
+    }
 }

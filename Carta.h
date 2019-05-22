@@ -24,7 +24,7 @@ public:
      * @param pal ens diu el pal de la carta
      * @param valor ens diu el valor de la carta
      */
-    Carta(char pal, int valor);
+    Carta(int pal, int valor);
 
     /**Operadors*/
 
@@ -53,8 +53,7 @@ public:
      */
     int valor() const;
 private:
-
-    char _pal; //@brief Pal de la carta
+    int _pal; //@brief Pal de la carta
     int _valor; //@brief Valor de la carta
   
 };

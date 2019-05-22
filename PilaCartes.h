@@ -67,6 +67,12 @@ public:
      */
     bool buida();
     
+    /**
+     * @brief Mostra 10 ultimes cartes
+     * @pre Pila no buida
+     * @post S'han mostrat les 10 ultimes cartes, o en cas de que hi hagi menys, les disponibles
+     */
+    void mostrarCartes() const;
 private:
     struct Node {
         Node * seg;

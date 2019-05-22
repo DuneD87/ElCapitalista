@@ -51,4 +51,13 @@ bool PilaCartes::buida() {
     return _cim == NULL;
 }
 
+void PilaCartes::mostrarCartes() const {
+    Node *aux = _cim;
+    int n = 0;
+    while (aux != NULL && n < 10) {
+        std::cout<<aux->valor.toString();
+        n++;
+        aux = aux->seg;
+    }
+}
 

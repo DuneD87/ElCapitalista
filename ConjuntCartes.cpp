@@ -21,6 +21,7 @@ void ConjuntCartes::afegir(const Carta& e) {
     for (int i = _nElems; i > pos; i--)
         _taula[i] = _taula[i - 1];
     _taula[pos] = e;
+    _nElems++;
 }
 
 void ConjuntCartes::allibera() {
@@ -60,9 +61,10 @@ ConjuntCartes& ConjuntCartes::operator=(const ConjuntCartes& t) {
     copia(t);
 }
 
-Carta& ConjuntCartes::operator[](int i) {
-    return _taula[i]; //Seg Fault
+Carta& ConjuntCartes::elem(int j) {
+    return _taula[j];
 }
+
 
 void ConjuntCartes::reservar() {
     _taula = new Carta[_maxElems];
