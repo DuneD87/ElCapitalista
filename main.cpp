@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
     char novaRonda;
     std::cin>>novaRonda;
     j.mostrarClassificacio();
+    std::cout<<"*** FINAL DEL JOC ***";
     return 0;
 }
 

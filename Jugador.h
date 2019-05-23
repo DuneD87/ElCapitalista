@@ -28,7 +28,7 @@ public:
      * @param nom del jugador
      */
     Jugador(std::string nom);
-    
+
     /**
      * @brief Afegeix una carta
      * @pre ---
@@ -80,7 +80,7 @@ public:
     bool haAcabat() const;
     
 private:
-    ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
+    ConjuntCartes *_ma;//@brief Conjunt de cartes que tindra el jugador
     std::string _nom;//@brief Nom del jugador
     bool _haAcabat; //@brief Ens diu si el jugador ha acabat la ronda
 };

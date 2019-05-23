@@ -90,12 +90,15 @@ bool Joc::esMesGran(int x, int y) const {
 }
 
 void Joc::iniciTorn(int torn, int& nAnterior, int& cAnterior, int &hanPasat) {
-    std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << "\n";
-    std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN.\n";
-    _jugadors[torn].mostrarMa();
-    nAnterior = 0;
-    cAnterior = 0;
-    hanPasat = 0;
+    if (_jugadors[torn].quedenCartes()) {
+        std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << "\n";
+        std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN.\n";
+        std::cout << "MA:\n";
+        _jugadors[torn].mostrarMa();
+        nAnterior = 0;
+        cAnterior = 0;
+        hanPasat = 0;
+    }
 }
 
 void Joc::ronda() {
@@ -105,11 +108,15 @@ void Joc::ronda() {
     int tornAnterior = _nJugadors + 1;
     int hanPasat = 0;
     int nAnterior = 0, cartaAnterior = 0;
+    bool totsPasats = false;
     while (jugadorsFi < _nJugadors - 1) {
         if (torn < _nJugadors) {
-            if (hanPasat >= _nJugadors - jugadorsFi - 1 ) iniciTorn(torn,nAnterior,cartaAnterior,hanPasat);
+            if (hanPasat >= _nJugadors - 1 - jugadorsFi) {
+                iniciTorn(torn,nAnterior,cartaAnterior,hanPasat);
+                totsPasats = true;
+            }
             if (_jugadors[torn].quedenCartes()) {
-                if (tornAnterior != torn) {
+                if (tornAnterior != torn && !totsPasats) {
                     std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << " -\nMA:\n";
                     _jugadors[torn].mostrarMa();
                 }
@@ -119,6 +126,8 @@ void Joc::ronda() {
                 std::cin >> n>>c;
                 if (_jugadors[torn].teCartesRepetides(n, c)) {
                     if (n > 0 && n >= nAnterior && esMesGran(c, cartaAnterior)) {
+                        hanPasat = 0;
+                        totsPasats = false;
                         std::cout << "TIRADA: ";
                         _jugadors[torn].eliminarConjuntCartes(n, c, _descartades);
                         std::cout << "\n";
@@ -131,9 +140,9 @@ void Joc::ronda() {
                             std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " HA FINALITZAT EN LA POSICIO " << jugadorsFi + 1 << ".\n";
                             _classificacio[jugadorsFi] = torn;
                             jugadorsFi++;
-
-                        }
-                        hanPasat = 0;
+                            
+                        }   
+                        
                     } else if (n == 0) {
                         hanPasat++;
                         std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " PASSA.\n";

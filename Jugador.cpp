@@ -6,24 +6,27 @@ Jugador::Jugador() {
 
 Jugador::Jugador(std::string nom) {
     _nom = nom;
+    _ma = new ConjuntCartes();
 }
+
+
 
 
 void Jugador::afegirCarta(const Carta& c) {
 
-    _ma.afegir(c);
+    _ma->afegir(c);
 }
 
 void Jugador::eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p) {
     
     for (int i = 0; i < nCartes; i++) {
         bool cartaEliminada = false;
-        for (int i = 0; i < _ma.tamany(); i++) {
-            if ((_ma.elem(i).valor() == valor) && !cartaEliminada) {
+        for (int i = 0; i < _ma->tamany(); i++) {
+            if ((_ma->elem(i).valor() == valor) && !cartaEliminada) {
 
-                std::cout<<_ma.elem(i).toString();
-                p.empila(_ma.elem(i));
-                _ma.eliminar(_ma.elem(i));
+                std::cout<<_ma->elem(i).toString();
+                p.empila(_ma->elem(i));
+                _ma->eliminar(_ma->elem(i));
                 cartaEliminada = true;
             }
         }
@@ -39,8 +42,8 @@ bool Jugador::teCartesRepetides(int nCartes, int valor) {
                     
     for (int i = 0; i < nCartes; i++) {
         //Mirem si existeixen n cartes amb el valor donat
-        for (int j = 0 ; j < _ma.tamany(); j++) {
-            if (_ma.elem(j).valor() == valor)
+        for (int j = 0 ; j < _ma->tamany(); j++) {
+            if (_ma->elem(j).valor() == valor)
                 n++;
         }
     }
@@ -49,13 +52,13 @@ bool Jugador::teCartesRepetides(int nCartes, int valor) {
 }
 
 bool Jugador::quedenCartes() const {
-    return _ma.tamany() > 0;
+    return _ma->tamany() > 0;
 }
 
 void Jugador::mostrarMa() const {
-    std::cout<<_ma.toString()<<'\n';
+    std::cout<<_ma->toString()<<'\n';
 }
 
 bool Jugador::haAcabat() const {
-    return _ma.tamany() == 0;
+    return _ma->tamany() == 0;
 }
