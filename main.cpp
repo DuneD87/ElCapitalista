@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
     }
     std::cout << "CLASSIFICACIO FINAL:" << std::endl;
     partida.mostrarClassificacio();
+    std::cout<<"*** FINAL DEL JOC ***";
     return 0;
 }
 

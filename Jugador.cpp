@@ -13,12 +13,10 @@ Jugador::Jugador(const std::string& nom) {
 
 
 void Jugador::afegirCarta(const Carta& c) {
-
     _ma->afegir(c);
 }
 
 void Jugador::eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p, bool mostrar) {
-    
     for (int i = 0; i < nCartes; i++) {
         bool cartaEliminada = false;
         for (int i = 0; i < _ma->tamany(); i++) {
@@ -82,9 +80,15 @@ void Jugador::donarPitjorCartes(Jugador& j, int nCartes, PilaCartes & p) {
 }
 
 void Jugador::donarMillorCartes(Jugador& j, int nCartes) {
+    
     for (int i = _ma->tamany() - 1; i >= _ma->tamany() - nCartes; i--) {
         j.afegirCarta(_ma->elem(i));
+        
     }
+    for (int i = 0; i < nCartes; i++) {
+        _ma->eliminar(_ma->elem(_ma->tamany() - i));
+    }
+   
 }
 
 
@@ -92,4 +96,5 @@ void Jugador::eliminarMa() {
     for (int i = 0; i < _ma->tamany(); i++) {
         _ma->eliminar(_ma->elem(i));
     }
+    if (_ma->tamany() > 0) _ma->eliminar(_ma->elem(0));
 }

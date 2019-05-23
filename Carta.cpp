@@ -58,3 +58,7 @@ std::string Carta::toString() const {
 int Carta::valor() const {
     return _valor;
 }
+
+int Carta::pal() const {
+    return _pal;
+}

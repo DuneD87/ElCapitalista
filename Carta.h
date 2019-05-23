@@ -49,9 +49,15 @@ public:
 
     /**
      * @brief ens dona el valor de la carta
-     * @return valor
+     * @return valor Enter amb el valor de la carta
      */
     int valor() const;
+    
+    /**
+     * @brief ens dona el pal de la carta 
+     * @return Enter amb el pal de la carta
+     */
+    int pal() const;
 private:
     int _pal; //@brief Pal de la carta
     int _valor; //@brief Valor de la carta
