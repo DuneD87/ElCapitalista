@@ -128,6 +128,12 @@ private:
      */
     bool esMesGran(int x, int y) const;
     
+    /**
+     * @brief Inicia el torn
+     * @pre Tots els jugadors han passat o el jugador ha tret un 2
+     * @post Les cartes anteriors s'han posat a 0, el jugador podra tirar qualsevol carta
+     */
+    void iniciTorn(int torn, int &nAnterior, int &cAnterior, int &hanPassat);
 };
 
 #endif /* JOC_H */

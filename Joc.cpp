@@ -78,7 +78,6 @@ void Joc::intercanvi(Carta& a, Carta& b) {
 }
 
 bool Joc::esMesGran(int x, int y) const {
-    std::cout << x << " > " << y << '\n';
     bool esMajor = false;
     if (y == 0) {
         esMajor = true;
@@ -90,6 +89,15 @@ bool Joc::esMesGran(int x, int y) const {
     return esMajor;
 }
 
+void Joc::iniciTorn(int torn, int& nAnterior, int& cAnterior, int &hanPasat) {
+    std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << "\n";
+    std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN.\n";
+    _jugadors[torn].mostrarMa();
+    nAnterior = 0;
+    cAnterior = 0;
+    hanPasat = 0;
+}
+
 void Joc::ronda() {
     //Mirem si tos els jugadors tenen cartes..
     int jugadorsFi = 0;
@@ -99,6 +107,7 @@ void Joc::ronda() {
     int nAnterior = 0, cartaAnterior = 0;
     while (jugadorsFi < _nJugadors - 1) {
         if (torn < _nJugadors) {
+            if (hanPasat >= _nJugadors - jugadorsFi - 1 ) iniciTorn(torn,nAnterior,cartaAnterior,hanPasat);
             if (_jugadors[torn].quedenCartes()) {
                 if (tornAnterior != torn) {
                     std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << " -\nMA:\n";
@@ -108,49 +117,40 @@ void Joc::ronda() {
                 std::cout << "QUINES CARTES VOLS TIRAR?\n";
                 int n = 0, c = 0;
                 std::cin >> n>>c;
-                if (n > 0 && n >= nAnterior && esMesGran(c, cartaAnterior)) {
-                    std::cout << n << "---" << nAnterior << '\n';
-
-                    if (_jugadors[torn].teCartesRepetides(n, c)) {
+                if (_jugadors[torn].teCartesRepetides(n, c)) {
+                    if (n > 0 && n >= nAnterior && esMesGran(c, cartaAnterior)) {
                         std::cout << "TIRADA: ";
                         _jugadors[torn].eliminarConjuntCartes(n, c, _descartades);
                         std::cout << "\n";
                         nAnterior = n;
                         cartaAnterior = c;
-                        if (c == 2 || hanPasat > _nJugadors - 1) {
-                            std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << "\n";
-                            std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN.\n";
-                            _jugadors[torn].mostrarMa();
+                        if (c == 2) {
+                            iniciTorn(torn,nAnterior,cartaAnterior,hanPasat);
                             torn--;
-                            nAnterior = 0;
-                            cartaAnterior = 0;
                         } else if (!_jugadors[torn].quedenCartes()) {
                             std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " HA FINALITZAT EN LA POSICIO " << jugadorsFi + 1 << ".\n";
                             _classificacio[jugadorsFi] = torn;
                             jugadorsFi++;
 
-
                         }
+                        hanPasat = 0;
+                    } else if (n == 0) {
+                        hanPasat++;
+                        std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " PASSA.\n";
+                    } else if (n < 0) {
+                        std::cout << "DARRERES CARTES TIRADES:\n";
+                        _descartades.mostrarCartes();
+                        std::cout << "\n";
+                        torn--;
                     } else {
-                        std::cout << "ERROR. EL JUGADOR NO TE AQUESTES CARTES\n";
+                        std::cout << "ERROR. AMB AQUESTA TIRADA NO SUPERES LES CARTES ACTUALS\n";
                         torn--;
                     }
-                    hanPasat = 0;
+
                 } else {
-                    std::cout << "ERROR. AMB AQUESTA TIRADA NO SUPERES LES CARTES ACTUALS\n";
+                    std::cout << "ERROR. EL JUGADOR NO TE AQUESTES CARTES\n";
                     torn--;
                 }
-
-            } else if (n == 0) {
-                hanPasat++;
-                std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " PASSA.\n";
-            } else if (n < 0) {
-                std::cout << "DARRERES CARTES TIRADES:\n";
-                _descartades.mostrarCartes();
-                std::cout << "\n";
-                torn--;
-            } else {
-
             }
 
             torn++;

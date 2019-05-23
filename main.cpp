@@ -30,6 +30,9 @@ int main(int argc, char** argv) {
     std::cin>>nBaralles;
     j.inicialitzarBaralla(nBaralles);
     j.ronda();
+    std::cout<<"VOLS FER UNA NOVA RONDA?\n";
+    char novaRonda;
+    std::cin>>novaRonda;
     j.mostrarClassificacio();
     return 0;
 }
