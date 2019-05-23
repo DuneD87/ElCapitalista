@@ -63,22 +63,30 @@ bool Jugador::haAcabat() const {
     return _ma->tamany() == 0;
 }
 
-void Jugador::donarCartes(Jugador& j, int nCartes, PilaCartes & p) {
-    std::cout<<"EL JUGADOR/A"<< _nom<<" I EL JUGADOR/A "<<j._nom<<" INTERCANVIEN "<<nCartes<<" CARTES\n";
+void Jugador::donarPitjorCartes(Jugador& j, int nCartes, PilaCartes & p) {
+    std::cout<<"EL JUGADOR/A "<< _nom<<" I EL JUGADOR/A "<<j._nom<<" INTERCANVIEN "<<nCartes<<" CARTES\n";
     int cartesDonades = 0;
     std::cout<<"- JUGADOR/A "<<_nom<<" -\n";
     std::cout<<_ma->toString()<<'\n';
-    std::cout<<"QUINES CARTES VOLS TIRAR?\n";
+    std::cout<<"QUINES CARTES VOLS TIRAR?"<<std::endl;
     while (cartesDonades < nCartes) {
         int actual;
+        std::cin.ignore();
         std::cin>>actual;
         eliminarConjuntCartes(1,actual,p,false);
-        if (!p.buida()) j.afegirCarta(p.cim());
+        j.afegirCarta(p.cim());
         p.desempila();
         cartesDonades++;
         
     }
 }
+
+void Jugador::donarMillorCartes(Jugador& j, int nCartes) {
+    for (int i = _ma->tamany() - 1; i >= _ma->tamany() - nCartes; i--) {
+        j.afegirCarta(_ma->elem(i));
+    }
+}
+
 
 void Jugador::eliminarMa() {
     for (int i = 0; i < _ma->tamany(); i++) {

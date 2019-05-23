@@ -105,7 +105,8 @@ void Joc::intercanviarCartes() {
     int nCartes = _nJugadors / 2;
     int jMax = _nJugadors - 1;
     for (int i = 0; i < nCartes; i++) {
-        _jugadors[i].donarCartes(_jugadors[jMax - i],nCartes - i,_descartades);
+        _jugadors[i].donarPitjorCartes(_jugadors[jMax - i],nCartes - i,_descartades);
+        _jugadors[jMax - i].donarMillorCartes(_jugadors[i],nCartes - i);
     }
 }
 
@@ -230,11 +231,11 @@ void Joc::inicialitzarRonda() {
     while (!_descartades.buida()) _descartades.desempila();
     //reorganitzem els jugadors segons la classificacio
     
-    /*for (int i = 0; i < _nJugadors - 1; i++) {
+    for (int i = 0; i < _nJugadors - 1; i++) {
         Jugador aux = _jugadors[i];
         _jugadors[i] = _jugadors[_classificacio[i]];
         _jugadors[_classificacio[i]] = aux;
-    }*/
+    }
     
 }
 

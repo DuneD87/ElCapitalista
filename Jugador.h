@@ -80,11 +80,18 @@ public:
     bool haAcabat() const;
     
     /**
-     * @brief Dona cartes
+     * @brief Dona les pitjors cartes
      * @pre ---
      * @post Donem n cartes al jugador passat per parametre
      */
-    void donarCartes(Jugador &j, int nCartes, PilaCartes & p);
+    void donarPitjorCartes(Jugador &j, int nCartes, PilaCartes & p);
+    
+    /**
+     * @brief Dona millor cartes
+     * @pre ---
+     * @post Donem les n millors cartes al jugador passat per parametre
+     */
+    void donarMillorCartes(Jugador &j, int nCartes);
     
     /**
      * @brief Elimina totes les cartes
