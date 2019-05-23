@@ -12,7 +12,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <limits>
 
 #include "Jugador.h"
 #include "Carta.h"
@@ -37,6 +36,20 @@ public:
      * @post S'ha alliberat memoria
      */
     ~Joc();
+    
+    /**
+     * @brief Constructor de copia
+     * @pre ---
+     * @post S'ha copiat l'objecte o al nostre objecte
+     */
+    Joc(const Joc & o);
+    
+    /**
+     * @brief Operador d'assignacio
+     * @pre ---
+     * @post S'ha assignat el contingut del objecte parametre al nostre objecte
+     */
+    Joc & operator = (const Joc & j);
     
     /**
      * @brief Incialitza baralla
@@ -134,6 +147,13 @@ private:
      * @post Les cartes anteriors s'han posat a 0, el jugador podra tirar qualsevol carta
      */
     void iniciTorn(int torn, int &nAnterior, int &cAnterior, int &hanPassat);
+    
+    /**
+     * @brief Copia l'estructura
+     * @pre ---
+     * @post S'ha copiat el contingut de l'estructura
+     */
+    void copiar(const Joc & o);
 };
 
 #endif /* JOC_H */

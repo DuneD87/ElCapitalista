@@ -13,27 +13,36 @@
 #include "Joc.h"
 
 int main(int argc, char** argv) {
-    std::cout<<"*** JOC DE L'ESCLAU ***\n"<<
+    
+    
+    std::cout << "*** JOC DE L'ESCLAU ***\n" <<
             "ENTRA LA LLAVOR:\n";
     unsigned llavor;
     std::cin>>llavor;
-    /*std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
-    int nBaralles;
-    std::cin>>nBaralles;*/
-    std::cout<<"ENTRA EL NOMBRE DE JUGADORS:\n";
+    std::cout << "ENTRA EL NOMBRE DE JUGADORS:\n";
     int nJugadors;
     std::cin>>nJugadors;
-    Joc j(llavor,nJugadors);
-    j.inicialitzarJugadors();
-    std::cout<<"ENTRA EL NOMBRE DE BARALLES:\n";
+    Joc partida(llavor, nJugadors);
+    partida.inicialitzarJugadors();
+    std::cout << "ENTRA EL NOMBRE DE BARALLES:\n";
     int nBaralles;
     std::cin>>nBaralles;
-    j.inicialitzarBaralla(nBaralles);
-    j.ronda();
-    std::cout<<"VOLS FER UNA NOVA RONDA?\n";
-    char novaRonda;
-    std::cin>>novaRonda;
-    j.mostrarClassificacio();
+    partida.inicialitzarBaralla(nBaralles);
+    char continuar = 'S';
+    while (continuar != 'N') {
+        partida.ronda();
+        std::cout << "VOLS FER UNA NOVA RONDA?" << std::endl;
+        std::cin>>continuar;
+        if (continuar != 'N') {
+            std::cout << "CLASSIFICACIO ACTUAL:" << std::endl;
+            partida.mostrarClassificacio();
+            //partida.inicialitzarRonda();
+            //partida.generarIRepartirCartes();
+            //partida.intercanviarCartes();
+        }
+    }
+    std::cout << "CLASSIFICACIO FINAL:" << std::endl;
+    partida.mostrarClassificacio();
     return 0;
 }
 

@@ -13,7 +13,7 @@
 #include <iostream>
 
 #include "Carta.h"
-#include "ConjuntCartes.h"//Conjunt cartes == llista ordeanda ?
+#include "ConjuntCartes.h"
 #include "PilaCartes.h"
 
 class Jugador {
@@ -27,7 +27,7 @@ public:
      * @brief Constructor amb paramatres
      * @param nom del jugador
      */
-    Jugador(std::string nom);
+    Jugador(const std::string & nom);
     
     /**
      * @brief Afegeix una carta

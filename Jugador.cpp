@@ -4,7 +4,7 @@
 Jugador::Jugador() {
 }
 
-Jugador::Jugador(std::string nom) {
+Jugador::Jugador(const std::string& nom) {
     _nom = nom;
 }
 
