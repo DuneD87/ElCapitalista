@@ -41,7 +41,7 @@ public:
      * @pre 0 < n < nombre de cartes a la ma
      * @post S'ha elimant un conjunt de cartes de la ma i empilat a la pila
      */
-    void eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p);
+    void eliminarConjuntCartes(int nCartes, int valor, PilaCartes & p,bool mostrar);
     
     /**
      * @brief Mostra el jugador
@@ -79,8 +79,22 @@ public:
      */
     bool haAcabat() const;
     
+    /**
+     * @brief Dona cartes
+     * @pre ---
+     * @post Donem n cartes al jugador passat per parametre
+     */
+    void donarCartes(Jugador &j, int nCartes, PilaCartes & p);
+    
+    /**
+     * @brief Elimina totes les cartes
+     * @pre ---
+     * @post S'han eliminat totes les cartes de la ma del jugador
+     */
+    void eliminarMa();
+    
 private:
-    ConjuntCartes _ma;//@brief Conjunt de cartes que tindra el jugador
+    ConjuntCartes *_ma;//@brief Conjunt de cartes que tindra el jugador
     std::string _nom;//@brief Nom del jugador
     bool _haAcabat; //@brief Ens diu si el jugador ha acabat la ronda
 };

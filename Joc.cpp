@@ -101,13 +101,25 @@ bool Joc::esMesGran(int x, int y) const {
     return esMajor;
 }
 
+void Joc::intercanviarCartes() {
+    int nCartes = _nJugadors / 2;
+    int jMax = _nJugadors - 1;
+    for (int i = 0; i < nCartes; i++) {
+        _jugadors[i].donarCartes(_jugadors[jMax - i],nCartes - i,_descartades);
+    }
+}
+
+
 void Joc::iniciTorn(int torn, int& nAnterior, int& cAnterior, int &hanPasat) {
-    std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << std::endl;
-    std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN." << std::endl;
-    _jugadors[torn].mostrarMa();
-    nAnterior = 0;
-    cAnterior = 0;
-    hanPasat = 0;
+    if (_jugadors[torn].quedenCartes()) {
+        std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << "\n";
+        std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " INICIA TORN.\n";
+        std::cout << "MA:\n";
+        _jugadors[torn].mostrarMa();
+        nAnterior = 0;
+        cAnterior = 0;
+        hanPasat = 0;
+    }
 }
 
 void Joc::ronda() {
@@ -117,12 +129,18 @@ void Joc::ronda() {
     int tornAnterior = _nJugadors + 1;
     int hanPasat = 0;
     int nAnterior = 0, cartaAnterior = 0;
+    bool totsPasats = false;
     while (jugadorsFi < _nJugadors - 1) {
+
         if (torn < _nJugadors) {
-            if (hanPasat >= _nJugadors - jugadorsFi - 1) iniciTorn(torn, nAnterior, cartaAnterior, hanPasat);
+
             if (_jugadors[torn].quedenCartes()) {
-                if (tornAnterior != torn) {
-                    std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << " -\nMA:" << std::endl;
+                if (hanPasat >= _nJugadors - 1 - jugadorsFi) {
+                    iniciTorn(torn, nAnterior, cartaAnterior, hanPasat);
+                    totsPasats = true;
+                }
+                if (tornAnterior != torn && !totsPasats) {
+                    std::cout << "- TORN DEL JUGADOR/A " << _jugadors[torn].toString() << " -\nMA:\n";
                     _jugadors[torn].mostrarMa();
                 }
                 tornAnterior = torn;
@@ -131,8 +149,10 @@ void Joc::ronda() {
                 std::cin >> n>>c;
                 if (_jugadors[torn].teCartesRepetides(n, c)) {
                     if (n > 0 && n >= nAnterior && esMesGran(c, cartaAnterior)) {
+                        hanPasat = 0;
+                        totsPasats = false;
                         std::cout << "TIRADA: ";
-                        _jugadors[torn].eliminarConjuntCartes(n, c, _descartades);
+                        _jugadors[torn].eliminarConjuntCartes(n, c, _descartades,true);
                         std::cout << "" << std::endl;
                         nAnterior = n;
                         cartaAnterior = c;
@@ -145,7 +165,7 @@ void Joc::ronda() {
                             jugadorsFi++;
 
                         }
-                        hanPasat = 0;
+
                     } else if (n == 0) {
                         hanPasat++;
                         std::cout << "EL JUGADOR/A " << _jugadors[torn].toString() << " PASSA." << std::endl;
@@ -201,6 +221,21 @@ void Joc::copiar(const Joc& o) {
     _jugadors = new Jugador[_nJugadors];
     for (int i = 0; i < _nJugadors; i++)
         _jugadors[i] = o._jugadors[i];
+}
+
+void Joc::inicialitzarRonda() {
+    for (int i = 0; i < _nJugadors; i++) {
+        _jugadors[i].eliminarMa();
+    }
+    while (!_descartades.buida()) _descartades.desempila();
+    //reorganitzem els jugadors segons la classificacio
+    
+    /*for (int i = 0; i < _nJugadors - 1; i++) {
+        Jugador aux = _jugadors[i];
+        _jugadors[i] = _jugadors[_classificacio[i]];
+        _jugadors[_classificacio[i]] = aux;
+    }*/
+    
 }
 
 

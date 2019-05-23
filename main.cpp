@@ -36,9 +36,9 @@ int main(int argc, char** argv) {
         if (continuar != 'N') {
             std::cout << "CLASSIFICACIO ACTUAL:" << std::endl;
             partida.mostrarClassificacio();
-            //partida.inicialitzarRonda();
-            //partida.generarIRepartirCartes();
-            //partida.intercanviarCartes();
+            partida.inicialitzarRonda();
+            partida.inicialitzarBaralla(nBaralles);
+            partida.intercanviarCartes();
         }
     }
     std::cout << "CLASSIFICACIO FINAL:" << std::endl;

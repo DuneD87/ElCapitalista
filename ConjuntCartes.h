@@ -92,6 +92,7 @@ public:
      * @post Ens diu si l'element es troba dins de la taula
      */
     bool cercar(const Carta & e);
+   
 
 private:
     

@@ -93,6 +93,20 @@ public:
      */
     void mostrarClassificacio() const;
     
+    /**
+     * @brief Intercanvi de cartes
+     * @pre S'ha jugat una ronda previament
+     * @post S'han intercanviat les cartes entre els diferents jugadors
+     */
+    void intercanviarCartes();
+    
+    /**
+     * @brief Inicialitza la ronda
+     * @pre S'ha jugat una ronda previament
+     * @post S'han eliminat totes les cartes dels jugadors i buidat la pila
+     */
+    void inicialitzarRonda();
+    
 private:
     
     unsigned _llavor; //@brief Llavor per generar aleatorietat
