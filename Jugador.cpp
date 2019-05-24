@@ -66,7 +66,7 @@ void Jugador::donarPitjorCartes(Jugador& j, int nCartes, PilaCartes & p) {
     int cartesDonades = 0;
     std::cout<<"- JUGADOR/A "<<_nom<<" -\n";
     std::cout<<_ma->toString()<<'\n';
-    std::cout<<"QUINES CARTES VOLS TIRAR?"<<std::endl;
+    std::cout<<"QUINES CARTES VOLS INTERCANVIAR?"<<std::endl;
     while (cartesDonades < nCartes) {
         int actual;
         std::cin.ignore();
@@ -86,7 +86,7 @@ void Jugador::donarMillorCartes(Jugador& j, int nCartes) {
         
     }
     for (int i = 0; i < nCartes; i++) {
-        _ma->eliminar(_ma->elem(_ma->tamany() - i));
+        _ma->eliminar(_ma->elem(_ma->tamany() - 1));
     }
    
 }
